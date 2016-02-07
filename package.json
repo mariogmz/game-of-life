@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/mariogmz/gof/issues"
   },
-  "homepage": "https://github.com/mariogmz/gof#readme"
+  "homepage": "https://github.com/mariogmz/gof#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
 }
