@@ -4,7 +4,7 @@
   "description": "Javascript implementation of Conway's Game of Life",
   "main": "app.js",
   "scripts": {
-    "test": "mocha ."
+    "test": "mocha test/app-test.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mariogmz/gof#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "mocha": "^2.4.5"
   }
 }
