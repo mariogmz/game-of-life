@@ -1,0 +1,22 @@
+{
+  "name": "mariogmz-gol",
+  "version": "1.0.0",
+  "description": "Javascript implementation of Conway's Game of Life",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariogmz/gof.git"
+  },
+  "keywords": [
+    "gof"
+  ],
+  "author": "Mario Gómez (mariogomezmtz@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mariogmz/gof/issues"
+  },
+  "homepage": "https://github.com/mariogmz/gof#readme"
+}
