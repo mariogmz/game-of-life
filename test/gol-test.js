@@ -29,10 +29,14 @@ var golTest = function () {
           gol = new Gol();
         });
 
-        it('should have a world', function () {
-          assert.property(gol, 'world', 'Gol does not have a world');
-          var World = require('../app/World');
-          assert.instanceOf(gol.world, World, 'Gol.world is not a correct instance');
+        describe('#world', function(){
+
+          it('should have a world', function () {
+            assert.property(gol, 'world', 'Gol does not have a world');
+            var World = require('../app/World');
+            assert.instanceOf(gol.world, World, 'Gol.world is not a correct instance');
+          });
+          
         });
 
       });
