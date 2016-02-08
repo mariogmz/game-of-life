@@ -31,11 +31,19 @@ World.prototype.count = function(x,y) {
 			if( !((xi == 0 && yi == 0) || xIndex < 0 || yIndex < 0 || xIndex >= this.size || yIndex >= this.size) ) {
 				if(this.cells[x+xi][y+yi].alive) { result.alive++; } else { result.dead++; }
 			}
-			
 		}
 	}
 
 	return result;
+}
+
+World.prototype.prepare = function(x, y) {
+	var living = this.count(x, y).alive;
+	if(this.cells[x][y].alive) {
+		return living == 2 || living == 3 ? -1 : (this.cells[x][y].kill() || false);
+	} else {
+		return living == 3 ? (this.cells[x][y].revive() || true) : -1;
+	}
 }
 
 World.prototype.toString = function() {
