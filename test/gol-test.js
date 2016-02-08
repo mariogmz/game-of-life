@@ -18,8 +18,8 @@ var golTest = function () {
 
       it('should be capable of creating valid instances', function () {
         var gol = new Gol();
-        assert.notNull(newGol, 'Gol instance is null');
-        assert.instanceOf(newGol, Gol, 'gol is not an instance of Gol');
+        assert.isNotNull(gol, 'Gol instance is null');
+        assert.instanceOf(gol, Gol, 'gol is not an instance of Gol');
       });
 
       describe('properties', function () {

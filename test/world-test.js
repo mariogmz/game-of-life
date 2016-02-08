@@ -17,9 +17,9 @@ var worldTest = function () {
       });
 
       it('should be capable if creating valid instances', function () {
-        var World = new World();
-        assert.notNull(World, 'World instance is null');
-        assert.instanceOf(World, World, 'World is not an instance of World');
+        var world = new World();
+        assert.isNotNull(world, 'world instance is null');
+        assert.instanceOf(world, World, 'world is not an instance of World');
       });
 
       describe('properties', function () {
@@ -31,20 +31,21 @@ var worldTest = function () {
 
         describe('world of cells', function () {
 
+
           it('should be an orthogonal two-dimentional array', function () {
             assert.property(world, 'cells');
             assert.isArray(world.cells);
             var xLength = world.cells.length;
             world.cells.forEach(function (cellsX) {
-              assert.equals(cellsX.length, xLength);
+              assert.equal(cellsX.length, xLength);
             });
           });
 
           it('should be 10x10 by default', function () {
             var n = 10;
-            assert.equals(world.cells.length, n);
+            assert.equal(world.cells.length, n);
             world.cells.forEach(function (cellsX) {
-              assert.equals(cellsX.length, n);
+              assert.equal(cellsX.length, n);
             });
           });
 
@@ -64,4 +65,4 @@ var worldTest = function () {
   });
 }
 
-module.exports = worldTest;
+module.exports = worldTest();
