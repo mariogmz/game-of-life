@@ -77,9 +77,7 @@ var worldTest = function () {
 
         context('when cell is located at the world boundaries', function() {
           it('should detect neither dead or alive on non-existent neighbour', function() {
-            var wiu = require('../data/test-boundaries');
-            world = new World(3, wiu);
-            console.log(world + '');
+            world = new World(3, require('../data/test-boundaries'));
             var result = world.count(0,0);
             assert.equal(result.alive, 2);
             assert.equal(result.dead, 1);
