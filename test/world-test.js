@@ -13,10 +13,10 @@ var worldTest = function () {
       });
 
       it('should be a function', function () {
-        assert.isFunction(World, 'World is not a function');
+        assert.isFunction(World,  'World is not a function');
       });
 
-      it('should be capable if creating valid instances', function () {
+      it('should be capable of creating valid instances', function () {
         var world = new World();
         assert.isNotNull(world, 'world instance is null');
         assert.instanceOf(world, World, 'world is not an instance of World');
