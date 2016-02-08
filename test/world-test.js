@@ -283,6 +283,25 @@ var worldTest = function () {
         });
       });
 
+      describe('#evolve', function() {
+        var world;
+        before(function() {
+          world = new World();
+        });
+
+        it('should exist', function() {
+          assert.property(world, 'evolve');
+        });
+
+        it('should be a function', function() {
+          assert.isFunction(world.evolve);
+        });
+
+        it.skip('should change each one of the cells to its next stage of evolution', function() {
+
+        });
+      });
+
     });
 
   });

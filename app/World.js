@@ -46,6 +46,10 @@ World.prototype.prepare = function(x, y) {
 	}
 }
 
+World.prototype.evolve = function() {
+	
+}
+
 World.prototype.toString = function() {
 	var world = "";
 	for(x=0; x<this.size; x++) {
