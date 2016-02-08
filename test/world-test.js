@@ -29,7 +29,7 @@ var worldTest = function () {
           world = new World();
         });
 
-        describe('world of cells', function () {
+        describe('#cells', function () {
 
 
           it('should be an orthogonal two-dimentional array', function () {
