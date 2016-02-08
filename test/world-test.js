@@ -60,6 +60,125 @@ var worldTest = function () {
 
         });
       });
+
+      describe('#count', function() {
+        var world;
+        beforeEach(function() {
+          world = new World();
+        });
+
+        it('should exist', function() {
+          assert.property(world, 'count');
+        });
+
+        it('should be a function', function() {
+          assert.isFunction(world.count);
+        })
+
+        context('when cell is located at the world boundaries', function() {
+          it('should detect neither dead or alive on non-existent neighbour', function() {
+            var wiu = require('../data/test-boundaries');
+            world = new World(3, wiu);
+            console.log(world + '');
+            var result = world.count(0,0);
+            assert.equal(result.alive, 2);
+            assert.equal(result.dead, 1);
+          });
+        });
+
+        context('when cell is not close to boundaries', function() {
+          var seed;
+          var x,y;
+          var length;
+
+          before(function() {
+            x = y = 1;
+            length = 3;
+          });
+
+          beforeEach(function() {
+            seed = [
+              [0,0,0],
+              [0,0,0],
+              [0,0,0],
+            ];
+          });
+
+          it('should detect cell above', function() {
+            seed[x-1][y] = 1;
+            var world = new World(length, seed);
+            var result = world.count(x,y);
+
+            assert.equal(result.alive, 1);
+            assert.equal(result.dead, 7);
+          });
+
+          it('should detect cell below', function() {
+            seed[x+1][y] = 1;
+            var world = new World(length, seed);
+            var result = world.count(x,y);
+            
+            assert.equal(result.alive, 1);
+            assert.equal(result.dead, 7);
+            
+          });
+
+          it('should detect cell at right', function() {
+            seed[x][y+1] = 1;
+            var world = new World(length, seed);
+            var result = world.count(x,y);
+            
+            assert.equal(result.alive, 1);
+            assert.equal(result.dead, 7);
+          });
+
+          it('should detect cell at left', function() {
+            seed[x][y-1] = 1;
+            var world = new World(length, seed);
+            var result = world.count(x,y);
+            
+            assert.equal(result.alive, 1);
+            assert.equal(result.dead, 7);
+          });
+
+          it('should detect cell above left', function() {
+            seed[x-1][y-1] = 1;
+            var world = new World(length, seed);
+            var result = world.count(x,y);
+            
+            assert.equal(result.alive, 1);
+            assert.equal(result.dead, 7);
+          });
+
+          it('should detect cell above right', function() {
+            seed[x-1][y+1] = 1;
+            var world = new World(length, seed);
+            var result = world.count(x,y);
+            
+            assert.equal(result.alive, 1);
+            assert.equal(result.dead, 7);
+          });
+
+          it('should detect cell below left', function() {
+            seed[x+1][y-1] = 1;
+            var world = new World(length, seed);
+            var result = world.count(x,y);
+            
+            assert.equal(result.alive, 1);
+            assert.equal(result.dead, 7);
+          });
+
+          it('should detect cell below right', function() {
+            seed[x+1][y+1] = 1;
+            var world = new World(length, seed);
+            var result = world.count(x,y);
+            
+            assert.equal(result.alive, 1);
+            assert.equal(result.dead, 7);
+          });
+        })
+      });
+
     });
 
   });
