@@ -40,14 +40,30 @@ World.prototype.count = function(x,y) {
 World.prototype.prepare = function(x, y) {
 	var living = this.count(x, y).alive;
 	if(this.cells[x][y].alive) {
-		return living == 2 || living == 3 ? -1 : (this.cells[x][y].kill() || false);
+		return living == 2 || living == 3 ? -1 : false;
 	} else {
-		return living == 3 ? (this.cells[x][y].revive() || true) : -1;
+		return living == 3 ? true : -1;
 	}
 }
 
+World.prototype.prepareAll = function() {
+	var toDie = [];
+	var toBorn = [];
+
+	for(var x=0; x < this.size; x++) {
+		for(var y=0; y < this.size; y++) {
+			var goingTo = this.prepare(x,y);
+			if(goingTo !== -1) {
+				if(goingTo) { toBorn.push([x,y]);} else { toDie.push([x,y]); }
+			}
+		}
+	}
+
+	return {toDie: toDie, toBorn: toBorn};
+}
+
 World.prototype.evolve = function() {
-	
+
 }
 
 World.prototype.toString = function() {

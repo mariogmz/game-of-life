@@ -210,7 +210,6 @@ var worldTest = function () {
             ];
             world = new World(size, seed);
             assert.isFalse(world.prepare(x,y));
-            assert.isFalse(world.cells[x][y].alive);
           });
 
           it('should die if there are more than three live neighbours', function() {
@@ -221,7 +220,6 @@ var worldTest = function () {
             ];
             world = new World(size, seed);
             assert.isFalse(world.prepare(x,y));
-            assert.isFalse(world.cells[x][y].alive);
           });
 
           it('should persist if there are three live neighbours', function() {
@@ -232,7 +230,6 @@ var worldTest = function () {
             ];
             world = new World(size, seed);
             assert.equal(world.prepare(x,y), -1);
-            assert.isTrue(world.cells[x][y].alive);
           });
 
           it('should persist if there are two live neighbours', function() {
@@ -243,7 +240,6 @@ var worldTest = function () {
             ];
             world = new World(size, seed);
             assert.equal(world.prepare(x,y), -1);
-            assert.isTrue(world.cells[x][y].alive);
           });
         });
 
@@ -256,7 +252,6 @@ var worldTest = function () {
             ];
             world = new World(size, seed);
             assert.isTrue(world.prepare(x,y));
-            assert.isTrue(world.cells[x][y].alive);
           });
 
           it('should remain dead if there are few than three live neighbours', function() {
@@ -267,7 +262,6 @@ var worldTest = function () {
             ];
             world = new World(size, seed);
             assert.equal(world.prepare(x,y), -1);
-            assert.isFalse(world.cells[x][y].alive);
           });
 
           it('should remain dead if there are more than three live neighbours', function() {
@@ -278,9 +272,47 @@ var worldTest = function () {
             ];
             world = new World(size, seed);
             assert.equal(world.prepare(x,y), -1);
-            assert.isFalse(world.cells[x][y].alive);
           });
         });
+      });
+
+      describe('#prepareAll', function() {
+        var seed;
+        var x,y;
+        var size;
+        var world;
+
+        before(function() {
+          seed = [
+            [0,1,0],
+            [0,1,0],
+            [1,0,1]
+          ];
+          size = 3;
+          world = new World(size, seed);
+
+        });
+
+        it('should exists', function() {
+          assert.property(world, 'prepareAll');
+        });
+
+        it('should be a function', function() {
+          assert.isFunction(world.prepareAll);
+        });
+
+        it('should get which cells are going to die on next evolution', function() {
+          var nextToDie = world.prepareAll().toDie;
+          assert.equal(nextToDie.length, 3);
+          assert.equal(nextToDie, [[0,1],[2,0],[2,2]]);
+        });
+
+        it('should get which cells are going to born on next evolution', function() {
+          var nextToBorn = world.prepareAll().toBorn;
+          assert.equal(nextToBorn.length, 3);
+          assert.equal(nextToBorn, [[1,0],[1,2],[2,1]]);
+        });
+
       });
 
       describe('#evolve', function() {
@@ -297,7 +329,7 @@ var worldTest = function () {
           assert.isFunction(world.evolve);
         });
 
-        it.skip('should change each one of the cells to its next stage of evolution', function() {
+        it('should change each one of the cells to its next stage of evolution', function() {
 
         });
       });
