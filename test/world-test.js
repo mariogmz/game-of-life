@@ -303,14 +303,16 @@ var worldTest = function () {
 
         it('should get which cells are going to die on next evolution', function() {
           var nextToDie = world.prepareAll().toDie;
-          assert.equal(nextToDie.length, 3);
-          assert.equal(nextToDie, [[0,1],[2,0],[2,2]]);
+          assert.lengthOf(nextToDie, 3);
+          var expected = [[0,1],[2,0],[2,2]];
+          assert.sameDeepMembers(nextToDie, expected);
         });
 
         it('should get which cells are going to born on next evolution', function() {
           var nextToBorn = world.prepareAll().toBorn;
-          assert.equal(nextToBorn.length, 3);
-          assert.equal(nextToBorn, [[1,0],[1,2],[2,1]]);
+          assert.lengthOf(nextToBorn, 3);
+          var expected = [[1,0],[1,2],[2,1]];
+          assert.sameDeepMembers(nextToBorn, expected);
         });
 
       });
