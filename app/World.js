@@ -79,11 +79,11 @@ World.prototype.evolve = function() {
 World.prototype.toString = function() {
 	var world = "";
 	for(x=0; x < this.size; x++) {
-		world += "[";
+		world += "|";
 		for(y=0; y < this.size; y++) {
 			world += this.cells[x][y] + (y < this.size -1 ? ',' : '');
 		}
-		world += "]\n";
+		world += "|\n";
 	}
 	return world;
 }
