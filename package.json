@@ -4,8 +4,7 @@
   "description": "Javascript implementation of Conway's Game of Life",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test/app-test.js",
-    "run": "node app.js"
+    "test": "mocha test/app-test.js"
   },
   "repository": {
     "type": "git",
