@@ -38,7 +38,7 @@ This project is done using Node JS, you can simply run Node interpreter on your 
 ### Final thoughts ###
 Well, this was a very fun project, it's useful to play around a little bit with TDD so you can play with any assertion library, testing framework and even any programming language you desire.
 
-I made a lot of unit testing along with CommonJS practices, and prototypes so I practiced a lot of JS terms that usually are a pain on the ass for begginers.
+I made a lot of unit testing along with CommonJS practices, and prototypes so I practiced a lot of JS terms that usually are a pain in the ass for begginers.
 
 Made with <3 by Mario Gomez (mariogomezmtz@gmail.com)
 
