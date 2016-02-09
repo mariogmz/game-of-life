@@ -278,7 +278,6 @@ var worldTest = function () {
 
       describe('#prepareAll', function() {
         var seed;
-        var x,y;
         var size;
         var world;
 
@@ -332,7 +331,24 @@ var worldTest = function () {
         });
 
         it('should change each one of the cells to its next stage of evolution', function() {
-
+          var seed = [
+            [0,1,0],
+            [0,1,0],
+            [1,0,1]
+          ];
+          var expected = [
+            [0,0,0],
+            [1,1,1],
+            [0,1,0]
+          ];
+          var size = 3;
+          world = new World(size, seed);
+          var newWorld = world.evolve();
+          for(var x=0; x < size; x++) {
+            for(var y=0; y < size; y++) {
+              assert.equal(newWorld[x][y].alive, expected[x][y]);
+            }
+          }
         });
       });
 

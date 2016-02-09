@@ -63,7 +63,18 @@ World.prototype.prepareAll = function() {
 }
 
 World.prototype.evolve = function() {
+	var result = this.prepareAll();
+	var cells = this.cells;
+	var x = 0, y = 1;
 
+	result.toDie.forEach(function(location) {
+		cells[location[x]][location[y]].kill();
+	});
+
+	result.toBorn.forEach(function(location) {
+		cells[location[x]][location[y]].revive();
+	});
+	return cells;
 }
 
 World.prototype.toString = function() {
