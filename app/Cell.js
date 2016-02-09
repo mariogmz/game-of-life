@@ -11,7 +11,7 @@ var Cell = function(alive) {
 };
 
 Cell.prototype.toString = function() {
-	return this.alive ? 'O' : 'X';
+	return this.alive ? 'O' : ' ';
 }
 
 module.exports = Cell;
